@@ -1,27 +1,27 @@
 export const addToCart = (id) => {
     return {
-        type: 'addItem',
+        type: 'ADD_ITEM',
         payload: { id },
     }
 }
 
 export const removeFromCart = (id) => {
     return {
-        type: 'removeItem',
+        type: 'REMOVE_ITEM',
         payload: { id },
     }
 }
 
 export const decrement = (id) => { 
     return {
-        type: 'decrement',
+        type: 'DECREMENT',
         payload: { id },
     }
 }
 
 export const increment = (id) => { 
     return {
-        type: 'increment',
+        type: 'INCREMENT',
         payload: { id },
     }
 }

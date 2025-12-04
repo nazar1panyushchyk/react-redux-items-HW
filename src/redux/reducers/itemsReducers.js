@@ -7,8 +7,8 @@ export const itemsReducers = (state = dataItems, action) => {
     console.log(payload);
     
     switch (type) {
-        case 'addItem': {
-        const id = action.payload.id;
+        case 'ADD_ITEM': {
+        const { id } = payload;
         const existingItem = state.cart.find(item => item.id === id);
 
         if (existingItem) {
@@ -22,21 +22,21 @@ export const itemsReducers = (state = dataItems, action) => {
         }
         }
         }
-        case 'increment': {
-            const id = action.payload.id;
+        case 'INCREMENT': {
+            const { id } = payload;
 
                 return { ...state, cart: state.cart.map(item => item.id === id
                     ? {...item, count: item.count + 1} : item
             )}
         }
-        case 'decrement': {
-            const id = action.payload.id;
+        case 'DECREMENT': {
+            const { id } = payload;
             const updatedCart = state.cart.map(item => item.id === id ? { ...item, count: item.count - 1} : item);
             const filteredCart = updatedCart.filter(item => item.count > 0);
             return { ...state, cart: filteredCart };
         }
-        case 'removeItem': {
-            const id = action.payload.id;
+        case 'REMOVE_ITEM': {
+           const { id } = payload;
             const newCart = state.cart.filter(item => item.id != id);
             return { ...state, cart: newCart };
         }

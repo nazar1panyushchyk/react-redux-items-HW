@@ -1,10 +1,15 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/actions/itemsActions";
+import { useNavigate } from "react-router-dom";
 
 export default function Item({ id, name, price }) {
    const dispatch = useDispatch();
+   const navigate = useNavigate();
     if (!name || !price) return null;
-   const handleAdd = () => dispatch(addToCart(id));
+   const handleAdd = () => {
+    dispatch(addToCart(id));
+    navigate("/cart");
+   }
     return (
       <li>
         <h2>{name}</h2>

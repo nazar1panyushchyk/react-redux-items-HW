@@ -1,12 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { increment, decrement, removeFromCart } from "../redux/actions/itemsActions";
+import { useNavigate } from "react-router-dom";
 
 export default function ItemsBasket() {
   const cart = useSelector(state => state.items.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const purchase = () => {
+    if (cart.length === 0) {
+      alert("Ваш кошик пустий!")
+    } else {
+      alert("Заказ успішний!")
+    }
+  }
   console.log(cart);
   return (
     <>
+    <button onClick={() => navigate("/")}>Назад до меню</button>
      <ul>
       {cart.map(({ id, name, price, count }) => (
         <li key={id}>
@@ -20,6 +30,7 @@ export default function ItemsBasket() {
         </li>
       ))}
      </ul>
+      <button onClick={purchase}>Оформити покупку</button>
     </>
   )
 }
