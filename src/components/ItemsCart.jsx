@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement, removeFromCart } from "../redux/actions/itemsActions";
+import { increment, decrement, remove } from "../redux/slice/itemsSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function ItemsBasket() {
@@ -24,9 +24,9 @@ export default function ItemsBasket() {
         <p>{price}</p>
         <p>{count}</p>
         <p>Total: {(price || 0) * (count || 0)}</p>
-        <button onClick={() => dispatch(increment(id))}>+</button>
-        <button onClick={() => dispatch(decrement(id))}>-</button>
-        <button onClick={() => dispatch(removeFromCart(id))}>Видалити</button>
+        <button onClick={() => dispatch(increment({id}))}>+</button>
+        <button onClick={() => dispatch(decrement({id}))}>-</button>
+        <button onClick={() => dispatch(remove({id}))}>Видалити</button>
         </li>
       ))}
      </ul>

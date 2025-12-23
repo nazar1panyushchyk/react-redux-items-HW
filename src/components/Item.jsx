@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/actions/itemsActions";
+import { add } from "../redux/slice/itemsSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function Item({ id, name, price }) {
@@ -7,7 +7,7 @@ export default function Item({ id, name, price }) {
    const navigate = useNavigate();
     if (!name || !price) return null;
    const handleAdd = () => {
-    dispatch(addToCart(id));
+    dispatch(add({id}));
     navigate("/cart");
    }
     return (
