@@ -5,11 +5,11 @@ export default function ItemsList() {
     const items = useSelector(({ items }) => items.items);
     console.log(items);
     return (
-        <ul>
+        <ul style={{ display: "flex"}}>
             {items.length > 0 &&
                 items.filter(item => item && item.id)
-                .map(({ id, name, price, count}) => (
-                    <Item key={id} id={id} name={name} price={price} count={count} />
+                .map(({ id, name, price, count, img}) => (
+                    <Item key={id} id={id} name={name} price={price} count={count} img={img} />
                 ))}
         </ul>
     )

@@ -1,20 +1,24 @@
 import { useDispatch } from "react-redux";
-import { add } from "../redux/slice/itemsSlice";
+import { addItem } from "../redux/operations/operations";
 import { useNavigate } from "react-router-dom";
+import { IoCartOutline } from "react-icons/io5";
 
-export default function Item({ id, name, price }) {
+export default function Item({ id, name, price, img }) {
    const dispatch = useDispatch();
    const navigate = useNavigate();
     if (!name || !price) return null;
    const handleAdd = () => {
-    dispatch(add({id}));
+    dispatch(addItem(id));
     navigate("/cart");
    }
-    return (
-      <li>
-        <h2>{name}</h2>
-        <p>Price: {price}</p>
-        <button onClick={handleAdd}>Додати в кошик</button>
-      </li>
-    )
+  return (
+    <li>
+      <img src={img} alt="pizza" />
+      <h2 style={{ color: "black" }}>{name}</h2>
+      <p style={{ color: "black" }}>Price: {price}</p>
+      <button onClick={handleAdd}>
+        Додати в кошик <IoCartOutline />
+      </button>
+    </li>
+  );
 }
